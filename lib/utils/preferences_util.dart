@@ -13,6 +13,18 @@ class PreferencesUtil {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
 
+  Future<bool> setSearchTerm(String value) async {
+    return await _sharedPreferences.setString('search_term', value);
+  }
+
+  String? getSearchTerm() {
+    return _sharedPreferences.getString('search_term');
+  }
+
+  void removeSearchTerm() {
+    _sharedPreferences.remove('search_term');
+  }
+
   Future<bool> setInt(String key, int value) async {
     return await _sharedPreferences.setInt(key, value);
   }
@@ -52,6 +64,7 @@ class PreferencesUtil {
   List<String>? getStringList(String key) {
     return _sharedPreferences.getStringList(key);
   }
+
   Set<String> getKeys() {
     return _sharedPreferences.getKeys();
   }
